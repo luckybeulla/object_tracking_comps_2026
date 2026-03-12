@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Clean Blog - Start Bootstrap Theme</title>
+        <meta name="description" content="Documentation of our SORT multi-object tracking implementation using YOLO detections, Kalman filter prediction, IoU matching, and the Hungarian algorithm." />
+        <meta name="author" content="Lucky Beulla Muhoza and Theo Demetriades" />
+        <title>SORT - Multi-Object Tracking Project</title>
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -19,7 +19,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="home.html">Start Bootstrap</a>
+                <a class="navbar-brand" href="home.html">Object Tracking</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -28,97 +28,254 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="home.html">Home</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="sort.html">SORT</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="bytetrack.html">BYTETRACK</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="bytetrack.html">ByteTrack</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="ocsort.html">OCSORT</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
-                            <h1>Man must explore, and this is exploration at its greatest</h1>
-                            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                            <h1>SORT: Simple Online and Realtime Tracking</h1>
+                            <h2 class="subheading">Implementing pedestrian tracking with YOLO detections, Kalman filter prediction, IoU matching, and the Hungarian algorithm</h2>
                             <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
+                                by
+                                <a href="#!">Lucky Beulla Muhoza &amp; Theo Demetriades</a>
                             </span>
                         </div>
                     </div>
                 </div>
             </div>
         </header>
+
         <!-- Post Content-->
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
-                        <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
-                        <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
-                        <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
-                        <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
-                        <h2 class="section-heading">The Final Frontier</h2>
-                        <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-                        <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-                        <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
-                        <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
-                        <h2 class="section-heading">Reaching for the Stars</h2>
-                        <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-                        <a href="#!"><img class="img-fluid" src="assets/img/post-sample-image.jpg" alt="..." /></a>
-                        <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-                        <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-                        <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
+
                         <p>
-                            Placeholder text by
-                            <a href="http://spaceipsum.com/">Space Ipsum</a>
-                            &middot; Images by
-                            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
+                            This page documents our implementation of a simple multi-object tracking pipeline based on
+                            SORT (Simple Online and Realtime Tracking). Our main goal was to track
+                            pedestrians across video frames by combining object detection, motion prediction, and
+                            matching. In our project, the objects of interest were pedestrians, and we used pretrained
+                            models designed to detect them in images and video.
                         </p>
+
+                        <p>
+                            The overall tracking pipeline consists of four main steps:
+                        </p>
+                        <ul>
+                            <li>Object detection using a pretrained YOLO model from OpenCV</li>
+                            <li>Motion prediction with a Kalman filter</li>
+                            <li>IoU calculation and generation of an IoU matrix</li>
+                            <li>Matching detections to tracks with the Hungarian algorithm</li>
+                        </ul>
+
+                        <h2 class="section-heading">Object Detection</h2>
+                        <p>
+                            The first step of the pipeline is detecting pedestrians in each frame of the video. For this
+                            part, we used a pretrained YOLO model from OpenCV.
+                        </p>
+                        <p>
+                            For each frame, the detector outputs bounding boxes around pedestrians. These detections are
+                            then passed into the tracking stage. 
+                        </p>
+
+                        <h2 class="section-heading">Kalman Filter Prediction</h2>
+                        <p>
+                            After detection, the next step is prediction. Each active track is represented by a Kalman
+                            filter, which estimates where an object is likely to appear in the next frame based on its
+                            previous position and motion.
+                        </p>
+                        <p>
+                            This helps the tracker remain stable from frame to frame, especially when detections are not
+                            perfectly smooth. The Kalman filter provides a predicted bounding box for each existing
+                            track, which can then be compared with the new detections in the current frame.
+                        </p>
+
+                        <h2 class="section-heading">IoU Calculation and IoU Matrix</h2>
+                        <p>
+                            To decide which detection belongs to which predicted track, we measure the overlap between
+                            bounding boxes using Intersection over Union (IoU). IoU is the ratio of
+                            the area of overlap between two boxes to the total area covered by both boxes.
+                        </p>
+                        <p>
+                            A high IoU means that a detection and a predicted track likely correspond to the same
+                            object. A low IoU means that they probably do not match.
+                        </p>
+                        <p>
+                            For every frame, we compute IoU values between:
+                        </p>
+                        <ul>
+                            <li>the predicted bounding boxes from the tracker, and</li>
+                            <li>the new detection bounding boxes from YOLO.</li>
+                        </ul>
+                        <p>
+                            These values are organized into an IoU matrix, where each row represents
+                            an existing track and each column represents a new detection. This matrix is the basis for
+                            the matching step.
+                        </p>
+
+                        <h2 class="section-heading">Hungarian Algorithm Matching</h2>
+                        <p>
+                            Once the IoU matrix is built, we use the Hungarian algorithm to find the
+                            best one-to-one assignment between predicted tracks and new detections. The purpose of this
+                            step is to pair each track with the most appropriate detection while considering the overall
+                            matching quality across all objects in the frame.
+                        </p>
+                        <p>
+                            In our implementation, detections with strong overlap are matched to existing tracks. If a
+                            detection does not match any current track, it may start a new track. If an existing track
+                            is not matched for too long, it may be removed.
+                        </p>
+
+                        <blockquote class="blockquote">
+                            Detections tell us where pedestrians are in the current frame, the Kalman filter predicts
+                            where tracked pedestrians should appear next, IoU measures overlap, and the Hungarian
+                            algorithm decides the best assignments.
+                        </blockquote>
+
+                        <h2 class="section-heading">Testing and Results</h2>
+
+                        <h3>Single Object Test</h3>
+                        <div class="ratio ratio-16x9 mb-4">
+                            <iframe src="https://www.youtube.com/embed/3Zf2GwhAj6g" 
+                            title="Single Object Test" allowfullscreen></iframe>
+                        </div>
+                        <p>
+                            We first tested the detection and tracking pipeline on a simple video containing only one
+                            person. At this stage, we had already implemented detections, the Kalman filter, and
+                            IoU calculation.
+                        </p>
+                        <p>
+                            In this setting, the predicted boxes followed the object smoothly, and the IoU stayed above
+                            0.9, which indicates strong overlap between predictions and detections.
+                            This showed that the pipeline worked well in a simple one-object scenario.
+                        </p>
+
+                        <h3>Two-Person Crossing Test</h3>
+                        <p>
+                            We then moved to a more difficult test: a video with two people walking past each other.
+                            This added the challenge of maintaining the correct identity for each person when they came
+                            close together.
+                        </p>
+                        <p>
+                            In this setting, we observed ID switches. Two main behaviors appeared:
+                        </p>
+                        <ol>
+                            <li>The two tracks stayed active, but their IDs swapped when the people crossed.</li>
+                            <div class="ratio ratio-16x9 mb-4">
+                                <iframe src="https://www.youtube.com/embed/WUiUNf2l4QU" 
+                                title="ID Switch Example" allowfullscreen></iframe>
+                            </div>
+                            <li>One ID was lost, and a new track was created for one of the pedestrians, while the other maintained its ID.</li>
+                            <div class="ratio ratio-16x9 mb-4">
+                                <iframe src="https://www.youtube.com/embed/l6FfCGvBmk0" 
+                                title="Track Lost Example" allowfullscreen></iframe>
+                            </div>
+                        </ol>
+                        <p>
+                            This showed that once objects become close or partially overlap, matching based only on IoU
+                            can become ambiguous.
+                        </p>
+
+                        <h3>MOT17 Benchmark Evaluation</h3>
+                        <p>
+                            To test the tracker in a more realistic setting, we evaluated it on a sequence from the
+                            MOT17 benchmark, which is a standardized dataset used to measure how well
+                            multi-object tracking algorithms perform on real-world video sequences.
+                        </p>
+                        <p>
+                            We ran our implementation on a sequence containing multiple pedestrians. In this more
+                            complex scenario, we saw that when the tracker matched correctly, the box overlap was
+                            reasonable. However, the tracker still had clear limitations.
+                        </p>
+                        <p>
+                            The main issues we observed were:
+                        </p>
+                        <ul>
+                            <li>Missed detections: objects that were not matched to any track</li>
+                            <li>ID switches: cases where the tracker assigned the wrong identity after occlusion or crossing</li>
+                        </ul>
+                        <p>
+                            These results showed that the main challenge was not simply predicting motion, but
+                            maintaining consistent identities across time.
+                        </p>
+
+                        <h2 class="section-heading">Key Takeaway</h2>
+                        <p>
+                            Our biggest takeaway from this project is that maintaining identity is harder than
+                            predicting motion. The Kalman filter can give stable and useful motion
+                            predictions, but keeping the same object identity through occlusion, interaction, and
+                            crossing is much more difficult.
+                        </p>
+                        <p>
+                            This is one reason why more advanced trackers often include additional cues such as
+                            appearance features or re-identification methods, instead of relying only on motion and
+                            overlap.
+                        </p>
+                        <h2 class="section-heading">Project Code</h2>
+                        <p>
+                        You can view the full implementation of our SORT tracker on GitHub.
+                        </p>
+
+                        <p>
+                        <a href="https://github.com/luckybeulla/sort-object-tracker" target="_blank">
+                        View the project repository on GitHub
+                        </a>
+                        </p>
+
+                        <!-- <a href="#!"><img class="img-fluid" src="assets/img/post-sample-image.jpg" alt="SORT tracking example" /></a>
+                        <span class="caption text-muted">
+                            Example tracking output. This image can be replaced with a screenshot from our pedestrian tracking tests.
+                        </span> -->
+
                     </div>
                 </div>
             </div>
         </article>
+
         <!-- Footer-->
         <footer class="border-top">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <ul class="list-inline text-center">
-                            <li class="list-inline-item">
-                                <a href="#!">
+                        <div class="row text-center">
+
+                            <div class="col">
+                                <a href="https://www.linkedin.com/in/luckymuhoza/" target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                                        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
+                                <p class="small mt-2">Lucky Beulla Muhoza</p>
+                            </div>
+                        
+                            <div class="col">
+                                <a href="THEO_LINKEDIN_URL" target="_blank">
                                     <span class="fa-stack fa-lg">
                                         <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                                        <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
                                     </span>
                                 </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fas fa-circle fa-stack-2x"></i>
-                                        <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                                <p class="small mt-2">Theo Demetriades</p>
+                            </div>
+                        
+                        </div>       
+                        <p class="text-center mb-3">Connect with us</p>
+                        <!-- <div class="small text-center text-muted fst-italic">Copyright &copy; Lucky Beulla Muhoza & Theo Demetriades 2026</div> -->
                     </div>
                 </div>
             </div>
         </footer>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
