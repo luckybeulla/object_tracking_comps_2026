@@ -66,6 +66,7 @@
                         <p> Occlusions that can cause the accumulation of errors in regular SORT can be resolved with a step called observation-centric-reupdate (ORU) in OC-SORT. Once the object that was once occluded is observed again after a period of being untracked, the ORU step goes back and re-updates the filter’s internal beliefs about the object’s motion, by replaying the missed updates using a set of synthetic measurements called a “virtual trajectory”, instead of continuing to use parameters that were corrupted during occlusion. </p>
                         <p> This virtual trajectory is generated using real observations from the detector right before the object was occluded, and in the first frame the object is detected again. The tracker then runs the KF update function along this trajectory, effectively correcting the filter’s internal motion parameters. This way, the ORU step minimizes the accumulation of errors that would otherwise continue to drift the algorithm’s predictions further and further away from the truth. Since the KF depends on previous predictions to make future predictions, without this step, the motion model would be inaccurate after occlusion, and the predictions will be off.</p>
                            
+                        <p><a href="https://github.com/JoshuaWSampsonBio/Edge-Comps-Object-Tracking">View our project here!</a></p>
                     </div>
                 </div>
             </div>
