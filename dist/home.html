@@ -100,7 +100,18 @@
 
         <p>
             I am a computer science and physics double major with a minor in mathematics. I am interested in information theory, machine learning, and quantum computing.    </div>
+    <div class="col-md-4">
+        <img src="assets/img/Sara_Headshot.jpg" class="img-fluid rounded" alt="Sara Wang">
+    </div>
 
+    <div class="col-md-8">
+        <p>
+            Sara Wang (She/They)
+        </p>
+
+        <p>
+            I am double majoring in Computer Science and Gender Studies, and I am passionate about data science and machine learning — particularly how these technologies shape and are shaped by the social world. For this project, I really enjoyed diving into the technical side of multi-object tracking, especially seeing how algorithms like the Kalman Filter and Hungarian Algorithm work together to follow multiple pedestrians across frames in real time. 
+    </div>
 </div>
                         <h2 class="section-heading">Background Information</h2>
                         <p>Object tracking is a computer vision application where a program detects and follows an object’s movement in space across time. Object tracking is a useful application that can be used in many fields, including but not limited to animal behavior studies, sports analytics, autonomous vehicles, etc. </p>
@@ -114,7 +125,7 @@
                         <h2 class="section-heading">Kalman filter (Motion model)</h2>
                         <p>When modeling the motion of the tracked object, we want our model to be robust to both noise (random variation in the measurement/process) as well as nonrandom changes to the motion of the tracked object. The Kalman filter is an algorithm that allows us to achieve this. Each subgroup used modifications of the same base kalman filter implementation, developed by our group.</p>
 
-                        <h2 class="section-heading">IoU and Hungarian algorithm</h2>
+                        <h2 class="section-heading">IoU</h2>
                         <p>Intersection over Union (IoU) is a geometric similarity metric that quantifies the spatial overlap between two bounding boxes. It serves as the foundation for determining correspondence between predicted track positions and newly detected objects.</p>
 
                         <p>Interpretation:</p>
@@ -126,9 +137,9 @@
                         <p>IoU = 0: No overlap (distinct objects)</p>
 
                         <h2 class="section-heading">Hungarian algorithm</h2>
-                        <p>After computing IoU values between all detection-track pairs, we face the assignment problem: given N detections and M tracks, determine the optimal one-to-one correspondence that maximizes overall tracking quality.</p>
-                        <p>This is a classic combinatorial optimization problem. With just 5 detections and 5 tracks, there exist 5! = 120 possible assignment configurations. The challenge is identifying the globally optimal solution from this exponentially large search space.</p>
-                        <p>Cost Matrix Construction: Cost(i, j) = 1 - IoU(detection_i, track_j)</p>
+                        <p>After computing IoU values between all detection-track pairs, we face the assignment problem: given N detections and M tracks, determine the optimal one-to-one correspondence. This is a combinatorial optimization problem with exponentially many solutions. Even with just 5 detections and 5 tracks, 120 possible assignments exist. The challenge is identifying the globally optimal solution.</p>
+                        <p>We formulate data association as a minimum cost assignment problem solved by the Hungarian Algorithm. IoU similarity scores are converted to costs using: Cost(i,j) = 1 - IoU(detection_i, track_j). This ensures high overlap yields low cost (preferred matches) while low overlap yields high cost (avoided matches). For example, IoU = 0.90 becomes cost = 0.10 (attractive match), while IoU = 0.20 becomes cost = 0.80 (poor match). Consider a cost matrix where Detection 1 has costs of 0.15, 0.90, and 0.95 with Tracks 5, 8, and 12 respectively. The minimal cost of 0.15 indicates Track 5 is the best match. Similarly, Detection 2's costs of 0.92, 0.12, and 0.88 clearly favor Track 8, while Detection 3's costs of 0.95, 0.91, and 0.18 point to Track 12. The Hungarian Algorithm uses this structure to find the optimal global assignment.</p>
+                        <p>The Hungarian Algorithm minimizes the sum of costs across all matched pairs, subject to constraints ensuring each detection matches at most one track and vice versa. This guarantees the globally optimal assignment rather than a locally greedy solution that might produce suboptimal overall results.</p>
                     </div>
                 </div>
             </div>
