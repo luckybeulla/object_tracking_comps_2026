@@ -43,9 +43,7 @@
                             <h1>ByteTrack</h1>
                             <h2 class="subheading">Low-score detections are more than background noises</h2>
                             <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
+                                <a href="#!">Lucy Zhang, Sara Wang</a>
                             </span>
                         </div>
                     </div>
@@ -66,14 +64,53 @@
                             Take high-confidence detections and match them to existing tracks using a Kalman Filter to predict motion.
                         </li>
                         <li>
-                            <strong>Low-Confidence Recovery:</strong>
+                            <strong>Low-Confidence Association:</strong>
                             Take the remaining unmatched tracks and compare them with low-confidence detections. If a low-score box appears where the Kalman Filter predicted the object should be, assign it back to that track.
                         </li>
                         </ol>
                         
                         <h2 class="section-heading">Our Implementation</h2>
                         <p>We created a complete multi-object tracking system from scratch: from raw video input to tracked objects with persistent IDs. We tested it on the MOT17 dataset.</p>
-                        <p>We used NumPy, OpenCV, scipy, and matplotlib for matrix operations, video processing, and the Hungarian algorithm implementation, and visualization. We coded everything else from scratch.</p>
+                        <p>We used NumPy, OpenCV, scipy, and matplotlib for matrix operations, video processing, and the Hungarian algorithm implementation, and visualization. We implemented everything else from scratch.</p>
+                        <h3 class="section-subheading">Core Modules</h3>
+                        <p>Our implementation is organized into several core modules:</p>
+
+                        <ol class="modules">
+                            <li>
+                                <strong>Kalman Filter</strong> (<code>kalman_filter.py</code>)
+                                <ul>
+                                    <li>8-state constant velocity model: [x, y, w, h, vx, vy, vw, vh]</li>
+                                    <li>Predicts object position and size</li>
+                                    <li>Updates with measurements</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong>Track</strong> (<code>track.py</code>)
+                                <ul>
+                                    <li>Wraps the Kalman Filter with lifecycle management</li>
+                                    <li>States: tentative → confirmed → lost</li>
+                                    <li>Maintains track history and metadata</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong>Tracker</strong> (<code>tracker.py</code>)
+                                <ul>
+                                    <li><strong>SimpleTracker:</strong> Single-stage matching (for HOG without scores)</li>
+                                    <li><strong>ByteTracker:</strong> Two-stage matching with high/low confidence splits</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong>Utilities</strong> (<code>utils.py</code>)
+                                <ul>
+                                    <li>IoU calculation</li>
+                                    <li>Hungarian algorithm matching</li>
+                                    <li>Coordinate conversions</li>
+                                </ul>
+                            </li>
+                        </ol>
                         <p>The cycle has four stages that repeat for every frame:</p>
                         <ol class="pipeline">
                         <li>
@@ -105,6 +142,25 @@
                         src="https://www.youtube.com/embed/ClcMpbP8sD4" >
                         </iframe>                        
                         <span class="caption text-muted">Placeholder caption. </span>
+                        <h2 class="section-heading">References</h2>
+                        
+                        <p class="small">
+                        [1] Y. Zhang et al., “ByteTrack: Multi-Object Tracking by Associating Every Detection Box,” 2021.
+                        Available: 
+                        <a href="https://arxiv.org/pdf/2110.06864" target="_blank">
+                        https://arxiv.org/pdf/2110.06864
+                        </a>
+                        </p>
+
+                        <p class="small">
+                        [2] T. Ceylan, “People Detection with HOG Algorithm in Python,” Medium, Dec. 25, 2022.
+                        <a href="https://medium.com/@turgay2317/people-detection-with-hog-algorithm-in-python-4fbd42e83b46" target="_blank">
+                        https://medium.com/@turgay2317/people-detection-with-hog-algorithm-in-python-4fbd42e83b46
+                        </a> (accessed Mar. 13, 2026).
+                        </p>
+
+
+
                     </div>
                 </div>
             </div>
