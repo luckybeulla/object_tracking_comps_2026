@@ -35,17 +35,15 @@
             </div>
         </nav>
         <!-- Page Header-->
-        <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
+        <header class="masthead" style="background-image: url('assets/img/bytetrack_background.png')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <div class="post-heading">
-                            <h1>Man must explore, and this is exploration at its greatest</h1>
-                            <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
+                            <h1>ByteTrack</h1>
+                            <h2 class="subheading">Low-score detections are more than background noises</h2>
                             <span class="meta">
-                                Posted by
-                                <a href="#!">Start Bootstrap</a>
-                                on August 24, 2023
+                                <a href="#!">Lucy Zhang, Sara Wang</a>
                             </span>
                         </div>
                     </div>
@@ -57,28 +55,112 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
-                        <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
-                        <p>What was most significant about the lunar voyage was not that man set foot on the Moon but that they set eye on the earth.</p>
-                        <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
-                        <p>For those who have seen the Earth from space, and for the hundreds and perhaps thousands more who will, the experience most certainly changes your perspective. The things that we share in our world are far more valuable than those which divide us.</p>
-                        <h2 class="section-heading">The Final Frontier</h2>
-                        <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-                        <p>There can be no thought of finishing for ‘aiming for the stars.’ Both figuratively and literally, it is a task to occupy the generations. And no matter how much progress one makes, there is always the thrill of just beginning.</p>
-                        <blockquote class="blockquote">The dreams of yesterday are the hopes of today and the reality of tomorrow. Science has not yet mastered prophecy. We predict too much for the next year and yet far too little for the next ten.</blockquote>
-                        <p>Spaceflights cannot be stopped. This is not the work of any one man or even a group of men. It is a historical process which mankind is carrying out in accordance with the natural laws of human development.</p>
-                        <h2 class="section-heading">Reaching for the Stars</h2>
-                        <p>As we got further and further away, it [the Earth] diminished in size. Finally it shrank to the size of a marble, the most beautiful you can imagine. That beautiful, warm, living object looked so fragile, so delicate, that if you touched it with a finger it would crumble and fall apart. Seeing this has to change a man.</p>
-                        <a href="#!"><img class="img-fluid" src="assets/img/post-sample-image.jpg" alt="..." /></a>
-                        <span class="caption text-muted">To go places and do things that have never been done before – that’s what living is all about.</span>
-                        <p>Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds, to seek out new life and new civilizations, to boldly go where no man has gone before.</p>
-                        <p>As I stand out here in the wonders of the unknown at Hadley, I sort of realize there’s a fundamental truth to our nature, Man must explore, and this is exploration at its greatest.</p>
-                        <p>
-                            Placeholder text by
-                            <a href="http://spaceipsum.com/">Space Ipsum</a>
-                            &middot; Images by
-                            <a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
+                        <p>When an object is partially blocked, we call it an occlusion. In a standard basic SORT framework, that object, or track, disappears from the system. When they reappear, SORT treats them as a new person, assigning them a new ID. This leads to fragmented tracks and limits our understanding of the scene. </p>
+                        <p>ByteTrack takes advantage of the idea that low-score detections can be more than just background noise. Most of the time, they are actually the objects we are looking for, just blurred or obstructed. Instead of tossing them out, ByteTrack creates a fallback for low-confidence boxes, which allows us to maintain the identity of an object even when it's hard to see. </p>
+                        <p>To make this work, ByteTrack uses a two-step association process: </p>
+                        <ol class="steps">
+                        <li>
+                            <strong>Standard SORT Association:</strong>
+                            Take high-confidence detections and match them to existing tracks using a Kalman Filter to predict motion.
+                        </li>
+                        <li>
+                            <strong>Low-Confidence Association:</strong>
+                            Take the remaining unmatched tracks and compare them with low-confidence detections. If a low-score box appears where the Kalman Filter predicted the object should be, assign it back to that track.
+                        </li>
+                        </ol>
+                        
+                        <h2 class="section-heading">Our Implementation</h2>
+                        <p>We created a complete multi-object tracking system from scratch: from raw video input to tracked objects with persistent IDs. We tested it on the MOT17 dataset.</p>
+                        <p>We used NumPy, OpenCV, scipy, and matplotlib for matrix operations, video processing, and the Hungarian algorithm implementation, and visualization. We implemented everything else from scratch.</p>
+                        <h3 class="section-subheading">Core Modules</h3>
+                        <p>Our implementation is organized into several core modules:</p>
+
+                        <ol class="modules">
+                            <li>
+                                <strong>Kalman Filter</strong> (<code>kalman_filter.py</code>)
+                                <ul>
+                                    <li>8-state constant velocity model: [x, y, w, h, vx, vy, vw, vh]</li>
+                                    <li>Predicts object position and size</li>
+                                    <li>Updates with measurements</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong>Track</strong> (<code>track.py</code>)
+                                <ul>
+                                    <li>Wraps the Kalman Filter with lifecycle management</li>
+                                    <li>States: tentative → confirmed → lost</li>
+                                    <li>Maintains track history and metadata</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong>Tracker</strong> (<code>tracker.py</code>)
+                                <ul>
+                                    <li><strong>SimpleTracker:</strong> Single-stage matching (for HOG without scores)</li>
+                                    <li><strong>ByteTracker:</strong> Two-stage matching with high/low confidence splits</li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <strong>Utilities</strong> (<code>utils.py</code>)
+                                <ul>
+                                    <li>IoU calculation</li>
+                                    <li>Hungarian algorithm matching</li>
+                                    <li>Coordinate conversions</li>
+                                </ul>
+                            </li>
+                        </ol>
+                        <p>The cycle has four stages that repeat for every frame:</p>
+                        <ol class="pipeline">
+                        <li>
+                            <strong>Prediction.</strong>
+                            We implemented the Kalman Filter prediction step. Each track predicts where it should be in the next frame based on its current position and velocity. An 8×8 state transition matrix is used for the constant velocity motion model.
+                        </li>
+
+                        <li>
+                            <strong>Detection.</strong>
+                            We wrote code to load detections from the MOT17 dataset files. Each frame contains a text file with bounding box coordinates, which we parse and format for the tracker.
+                        </li>
+
+                        <li>
+                            <strong>Association.</strong>
+                            This stage performs Hungarian matching. We compute the IoU matrix between all predicted track positions and detections, then find the optimal assignment between them.
+                        </li>
+                        <li>
+                            <strong>Update.</strong>
+                            For matched pairs, we update the track using the Kalman Filter update equations. Unmatched detections create new tracks, while unmatched tracks remain alive for up to 30 frames in case the object reappears.
+                        </li>
+                        </ol>
+
+                        <h2 class="section-heading">Flowchart caption</h2>
+                        <a href="#!"><img class="img-fluid" src="assets/img/bytetrack.jpg" alt="..." /></a>
+                        <span class="caption text-muted">.</span>
+
+                        <h2 class="section-heading">Our Tracking</h2>
+                        <iframe width="600" height="315"
+                        src="https://www.youtube.com/embed/ClcMpbP8sD4" >
+                        </iframe>                        
+                        <span class="caption text-muted">Placeholder caption. </span>
+                        <h2 class="section-heading">References</h2>
+                        
+                        <p class="small">
+                        [1] Y. Zhang et al., “ByteTrack: Multi-Object Tracking by Associating Every Detection Box,” 2021.
+                        Available: 
+                        <a href="https://arxiv.org/pdf/2110.06864" target="_blank">
+                        https://arxiv.org/pdf/2110.06864
+                        </a>
                         </p>
+
+                        <p class="small">
+                        [2] T. Ceylan, “People Detection with HOG Algorithm in Python,” Medium, Dec. 25, 2022.
+                        <a href="https://medium.com/@turgay2317/people-detection-with-hog-algorithm-in-python-4fbd42e83b46" target="_blank">
+                        https://medium.com/@turgay2317/people-detection-with-hog-algorithm-in-python-4fbd42e83b46
+                        </a> (accessed Mar. 13, 2026).
+                        </p>
+
+
+
                     </div>
                 </div>
             </div>
