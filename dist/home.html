@@ -16,7 +16,6 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-        <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="home.html">Object Tracking</a>
@@ -34,7 +33,6 @@
                 </div>
             </div>
         </nav>
-        <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -51,13 +49,29 @@
                 </div>
             </div>
         </header>
-        <!-- Post Content-->
         <article class="mb-4">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
                         <h2 class="section-heading">About Us</h2>
-                        <p>INTRODUCTTIONS OF US HERE</p>
+
+<div class="row align-items-center mb-4">
+    
+    <div class="col-md-4">
+        <img src="assets/img/Yeseo.jpg" class="img-fluid rounded" alt="Introduction Image">
+    </div>
+
+    <div class="col-md-8">
+        <p>
+            Yeseo Jeon (She/Her)
+        </p>
+
+        <p>
+            I am a computer science major on the pre-veterinary track with special interests in animal behavior research. I am interested in applying object tracking skills to animal behavior research, and I hope to use this project as an opportunity to learn more about object tracking and its applications in animal behavior studies.
+        </p>
+    </div>
+
+</div>
                         <h2 class="section-heading">Background Information</h2>
                         <p>Object tracking is a computer vision application where a program detects and follows an object’s movement in space across time. Object tracking is a useful application that can be used in many fields, including but not limited to animal behavior studies, sports analytics, autonomous vehicles, etc. </p>
                         <p>In order to do this, the system requires a detector that determines what objects are present in each image. It also requires a motion modeler that makes predictions on where the object is expected to appear in the frame based on its previous position and motion, and also updates that prediction from information from detections. Mathematical models like the Kalman Filter make this possible. In cases of multiple object tracking (MOT), the tracker needs to compare predicted object locations with new detections and assign the most similar locations optimally. Methods like the Hungarian algorithm solve this assignment problem.</p>
