@@ -152,7 +152,20 @@
 
                         <h2 class="section-heading">Kalman filter (Motion model)</h2>
                         <p>When modeling the motion of the tracked object, we want our model to be robust to both noise (random variation in the measurement/process) as well as nonrandom changes to the motion of the tracked object. The Kalman filter is an algorithm that allows us to achieve this. Each subgroup used modifications of the same base kalman filter implementation, developed by our group.</p>
-
+                        <p>
+                        The Kalman filter combines imperfect measurements with a motion model to produce a more stable and accurate estimate of an object's true position over time. The filter tracks the state vector, which defines the quantities being tracked. In our system, the state vector includes the parameters of the object’s bounding box along with the velocities of the parameters.  
+                        </p>
+                        <p>The Kalman filter operates iteratively through two steps: </p>
+                        <ol class="steps">
+                        <li>
+                            <strong>Estimation:</strong>
+                            the state vector and its uncertainty are projected forward using the motion model.
+                        </li>
+                        <li>
+                            <strong>Update:</strong>
+                            A new detection is incorporated using the Kalman gain, which determines how much the measurement should adjust the prediction based on the uncertainties P and R. 
+                        </li>
+                        </ol>
                         <h2 class="section-heading">IoU</h2>
                         <p>Intersection over Union (IoU) is a geometric similarity metric that quantifies the spatial overlap between two bounding boxes. It serves as the foundation for determining correspondence between predicted track positions and newly detected objects.</p>
 
