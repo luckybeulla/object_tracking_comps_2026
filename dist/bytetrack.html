@@ -55,6 +55,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 class="section-heading">ByteTrack Overview</h2>
                         <p>When an object is partially blocked, we call it an occlusion. In a standard basic SORT framework, that object, or track, disappears from the system. When they reappear, SORT treats them as a new person, assigning them a new ID. This leads to fragmented tracks and limits our understanding of the scene. </p>
                         <p>ByteTrack takes advantage of the idea that low-score detections can be more than just background noise. Most of the time, they are actually the objects we are looking for, just blurred or obstructed. Instead of tossing them out, ByteTrack creates a fallback for low-confidence boxes, which allows us to maintain the identity of an object even when it's hard to see. </p>
                         <p>To make this work, ByteTrack uses a two-step association process: </p>
